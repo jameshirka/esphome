@@ -1,6 +1,21 @@
 # Check or edit all secrets to match yours.
 # Power metering isn't calibrated.
+# Based on Tasmota Descrption: https://templates.blakadder.com/brilliant_BL20925.html
 
+#GPIO   Component
+#GPIO00	None
+#GPIO01	None
+#GPIO02	None
+#GPIO03	Button1
+#GPIO04	HLW8012 CF
+#GPIO05	HLWBL CF1
+#GPIO09	None
+#GPIO10	None
+#GPIO12	HLWBL SELi
+#GPIO13	LedLinki
+#GPIO14	Relay1
+#GPIO15	None
+#GPIO16	None
 
 substitutions:
     devicename: brilliant_smartplug_1
