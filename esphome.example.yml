@@ -1,0 +1,62 @@
+esphome:
+  name: brilliant_smartplug_1
+  platform: ESP8266
+  board: esp01_1m
+  board_flash_mode: dout
+
+wifi:
+  ssid: ""
+  password: ""
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Brilliant Smartplug 1"
+    password: ""
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  password: ""
+  
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO14
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "brilliant_smartplug_1 Button"
+    on_press:
+      - switch.toggle: relay
+  - platform: status
+    name: "brilliant_smartplug_1 Status"
+
+sensor:
+  - platform: wifi_signal
+    name: "brilliant_smartplug_1 1 WiFi Signal"
+    update_interval: 60s
+
+switch:
+  - platform: gpio
+    name: "brilliant_smartplug_1 Relay"
+    pin: GPIO5
+    id: 'relay'
+  - platform: restart
+    name: "brilliant_smartplug_1 Restart"
+output:
+  - platform: esp8266_pwm
+    id: brilliant_smartplug_1_red_led
+    pin:
+      number: GPIO13
+      inverted: True
+
+light:
+  - platform: monochromatic
+    name: "brilliant_smartplug_1  LED"
+    output: brilliant_smartplug_1_red_led
